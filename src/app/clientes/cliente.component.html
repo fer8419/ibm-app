@@ -1,0 +1,60 @@
+<div class="container">
+    <h2>Clientes</h2>
+
+    <form>
+        <h3>Crear cliente</h3>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre del cliente" [(ngModel)]="clienteForm.nombre" required name="nombre" #nombre>            
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" placeholder="Dirección" [(ngModel)]="clienteForm.direccion" required name="direccion" #direccion>            
+        </div>
+        <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad" placeholder="Ciudad de residencia" [(ngModel)]="clienteForm.ciudad" required name="ciudad" #ciudad>            
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="number" class="form-control" id="telefono" placeholder="Número de teléfono" [(ngModel)]="clienteForm.telefono" required name="telefono" #telefono>            
+        </div>
+        <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+    </form>
+
+    <h3>Registros</h3>
+    <table class="table">
+        <thead>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Ciudad</th>
+            <th>Teléfono</th>
+            <th>Tarjetas</th>
+            <th>Eliminar</th>
+            <th>Editar</th>
+            <th>Historial consumos</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of clientes">
+                <td>{{cliente.nombre}}</td>
+                <td>{{cliente.direccion}}</td>
+                <td>{{cliente.ciudad}}</td>
+                <td>{{cliente.telefono}}</td>
+                <td>{{concatenarNumero(cliente.tarjetas)}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(cliente.codigo)">
+                        <span class="glyphicon glyphicon-trash"></span> Eliminar
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" (click)="consultarEdicion(cliente.codigo)">
+                        <span class="glyphicon glyphicon-pencil"></span> Editar
+                    </button>
+                </td>
+                <td>
+                    <a class="nav-link" href="#">Consumos</a>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+</div>

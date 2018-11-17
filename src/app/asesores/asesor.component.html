@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Asesores</h2>
+
+    <form>
+        <h3>Crear asesor</h3>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre del cliente" [(ngModel)]="asesorForm.nombre" required name="nombre" #nombre>            
+        </div>
+        <div class="form-group">
+            <label for="especialidad">Especialidad</label>
+            <input type="text" class="form-control" id="especialidad" placeholder="Especialidad" [(ngModel)]="asesorForm.especialidad" required name="especialidad" #especialidad>            
+        </div>        
+        <button type="button" class="btn btn-primary" (click)="guardar()">Guardar</button>
+    </form>
+
+    <h3>Registros</h3>
+    <table class="table">
+        <thead>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Eliminar</th>
+            <th>Editar</th>           
+        </thead>
+        <tbody>
+            <tr *ngFor="let asesor of asesores">
+                <td>{{asesor.nombre}}</td>
+                <td>{{asesor.especialidad}}</td>                
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(asesor.codigo)">
+                        <span class="glyphicon glyphicon-trash"></span> Eliminar
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" (click)="consultarEdicion(asesor.codigo)">
+                        <span class="glyphicon glyphicon-pencil"></span> Editar
+                    </button>
+                </td>                               
+            </tr>
+        </tbody>
+    </table>
+</div>
